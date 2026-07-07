@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=6" />
   <script>
     (function () {
       var S = ["fr", "en", "nl", "de", "it", "es", "pl", "ar", "yue", "ja"];
@@ -499,7 +499,7 @@
                     <div class="cityCard__title" data-i18n="cityMons">Mons</div>
                   </div>
                   <div class="qrBox">
-                    <img class="qr" src="assets/qr_clq-mons_netlify_app.png?v=5" alt="QR code – CityLoopQuest Mons" width="240" height="240" loading="lazy" decoding="async" />
+                    <img class="qr" src="assets/qr_clq-mons_netlify_app.png?v=6" alt="QR code – CityLoopQuest Mons" width="240" height="240" loading="lazy" decoding="async" />
                   </div>
                   <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
                 </a>
@@ -512,17 +512,22 @@
                     <div class="cityCard__title" data-i18n="cityBrussels">Bruxelles</div>
                   </div>
                   <div class="qrBox">
-                    <img class="qr" src="assets/qr_clq-bruxelles_netlify_app.png?v=5" alt="QR code – CityLoopQuest Bruxelles" width="240" height="240" loading="lazy" decoding="async" />
+                    <img class="qr" src="assets/qr_clq-bruxelles_netlify_app.png?v=6" alt="QR code – CityLoopQuest Bruxelles" width="240" height="240" loading="lazy" decoding="async" />
                   </div>
                   <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
                 </a>
 
-                <div class="cityCard cityCard--disabled cityCard--pending" aria-disabled="true">
+                <div class="cityCard cityCard--soon" aria-disabled="true">
                   <div class="cityCard__top">
-                    <div class="cityCard__icon">🚧</div>
+                    <div class="cityCard__icon">
+                      <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
+                    </div>
                     <div class="cityCard__title" data-i18n="cityLiege">Liège</div>
                   </div>
-                  <div class="cityCard__hint" data-i18n="cityPendingHint">En cours de développement</div>
+                  <div class="qrBox">
+                    <img class="qr" src="assets/qr_clq-liege_netlify_app.png?v=6" alt="QR code – CityLoopQuest Liège (à venir)" width="240" height="240" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
                 </div>
               </div>
             </div>
@@ -530,7 +535,7 @@
             <div class="cityCountry">
               <h4 class="cityCountry__title" data-i18n="countryFrance">France</h4>
               <div class="cityGrid">
-                <div class="cityCard cityCard--disabled cityCard--fake" aria-disabled="true">
+                <div class="cityCard cityCard--soon" aria-disabled="true">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
@@ -538,7 +543,7 @@
                     <div class="cityCard__title" data-i18n="cityLille">Lille</div>
                   </div>
                   <div class="qrBox">
-                    <img class="qr qr--disabled" src="assets/qr_clq-lille_netlify_app.png?v=5" alt="QR code – CityLoopQuest Lille (à venir)" width="240" height="240" loading="eager" decoding="async" />
+                    <img class="qr" src="assets/qr_clq-lille_netlify_app.png?v=6" alt="QR code – CityLoopQuest Lille (à venir)" width="240" height="240" loading="lazy" decoding="async" />
                   </div>
                   <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
                 </div>
@@ -548,7 +553,7 @@
             <div class="cityCountry">
               <h4 class="cityCountry__title" data-i18n="countrySpain">Espagne</h4>
               <div class="cityGrid">
-                <div class="cityCard cityCard--disabled cityCard--fake" aria-disabled="true">
+                <div class="cityCard cityCard--soon" aria-disabled="true">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
@@ -556,12 +561,12 @@
                     <div class="cityCard__title" data-i18n="cityAlicante">Alicante</div>
                   </div>
                   <div class="qrBox">
-                    <img class="qr qr--disabled" src="assets/qr_clq-alicante_netlify_app.png?v=5" alt="QR code – CityLoopQuest Alicante (à venir)" width="240" height="240" loading="lazy" decoding="async" />
+                    <img class="qr" src="assets/qr_clq-alicante_netlify_app.png?v=6" alt="QR code – CityLoopQuest Alicante (à venir)" width="240" height="240" loading="lazy" decoding="async" />
                   </div>
                   <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
                 </div>
 
-                <div class="cityCard cityCard--disabled cityCard--fake" aria-disabled="true">
+                <div class="cityCard cityCard--soon" aria-disabled="true">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
@@ -569,12 +574,12 @@
                     <div class="cityCard__title" data-i18n="cityCaravaca">Caravaca de la Cruz</div>
                   </div>
                   <div class="qrBox">
-                    <img class="qr qr--disabled" src="assets/qr_clq-caravaca-de-la-cruz_netlify_app.png?v=5" alt="QR code – CityLoopQuest Caravaca (à venir)" width="240" height="240" loading="lazy" decoding="async" />
+                    <img class="qr" src="assets/qr_clq-caravaca-de-la-cruz_netlify_app.png?v=6" alt="QR code – CityLoopQuest Caravaca (à venir)" width="240" height="240" loading="lazy" decoding="async" />
                   </div>
                   <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
                 </div>
 
-                <div class="cityCard cityCard--disabled cityCard--fake" aria-disabled="true">
+                <div class="cityCard cityCard--soon" aria-disabled="true">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
@@ -582,12 +587,12 @@
                     <div class="cityCard__title" data-i18n="cityCarthagene">Carthagène</div>
                   </div>
                   <div class="qrBox">
-                    <img class="qr qr--disabled" src="assets/qr_clq-carthagene_netlify_app.png?v=5" alt="QR code – CityLoopQuest Carthagène (à venir)" width="240" height="240" loading="lazy" decoding="async" />
+                    <img class="qr" src="assets/qr_clq-carthagene_netlify_app.png?v=6" alt="QR code – CityLoopQuest Carthagène (à venir)" width="240" height="240" loading="lazy" decoding="async" />
                   </div>
                   <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
                 </div>
 
-                <div class="cityCard cityCard--disabled cityCard--fake" aria-disabled="true">
+                <div class="cityCard cityCard--soon" aria-disabled="true">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
@@ -595,7 +600,7 @@
                     <div class="cityCard__title" data-i18n="cityLorca">Lorca</div>
                   </div>
                   <div class="qrBox">
-                    <img class="qr qr--disabled" src="assets/qr_clq-lorca_netlify_app.png?v=5" alt="QR code – CityLoopQuest Lorca (à venir)" width="240" height="240" loading="lazy" decoding="async" />
+                    <img class="qr" src="assets/qr_clq-lorca_netlify_app.png?v=6" alt="QR code – CityLoopQuest Lorca (à venir)" width="240" height="240" loading="lazy" decoding="async" />
                   </div>
                   <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
                 </div>
@@ -608,12 +613,12 @@
                     <div class="cityCard__title" data-i18n="cityMurcia">Murcia</div>
                   </div>
                   <div class="qrBox">
-                    <img class="qr" src="assets/qr_clq-murcia_netlify_app.png?v=5" alt="QR code – CityLoopQuest Murcia" width="240" height="240" loading="lazy" decoding="async" />
+                    <img class="qr" src="assets/qr_clq-murcia_netlify_app.png?v=6" alt="QR code – CityLoopQuest Murcia" width="240" height="240" loading="lazy" decoding="async" />
                   </div>
                   <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
                 </a>
 
-                <div class="cityCard cityCard--disabled cityCard--fake" aria-disabled="true">
+                <div class="cityCard cityCard--soon" aria-disabled="true">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
@@ -621,7 +626,7 @@
                     <div class="cityCard__title" data-i18n="cityAguilas">Águilas</div>
                   </div>
                   <div class="qrBox">
-                    <img class="qr qr--disabled" src="assets/qr_clq-aguilas_netlify_app.png?v=5" alt="QR code – CityLoopQuest Águilas (à venir)" width="240" height="240" loading="lazy" decoding="async" />
+                    <img class="qr" src="assets/qr_clq-aguilas_netlify_app.png?v=6" alt="QR code – CityLoopQuest Águilas (à venir)" width="240" height="240" loading="lazy" decoding="async" />
                   </div>
                   <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
                 </div>

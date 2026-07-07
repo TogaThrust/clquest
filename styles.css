@@ -749,12 +749,13 @@ html.lang-gate-pending body > *:not(#langGate) {
   min-height: 120px;
   opacity:.75;
 }
-.cityCard--fake{
+.cityCard--soon{
   border-style: dashed;
-  background: rgba(255,255,255,.02);
+  cursor: default;
 }
-.cityCard--fake .qrBox{
-  filter: grayscale(100%);
+.cityCard--soon:hover{
+  transform: none;
+  background: rgba(255,255,255,.03);
 }
 .cityCard__top{ display:flex; gap: 10px; align-items:center; }
 .cityCard__icon{
