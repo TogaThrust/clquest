@@ -730,7 +730,7 @@ html.lang-gate-pending body > *:not(#langGate) {
 }
 .cityGrid{
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
 }
 .cityCard{
@@ -744,14 +744,17 @@ html.lang-gate-pending body > *:not(#langGate) {
   box-shadow: 0 20px 50px rgba(0,0,0,.18);
 }
 .cityCard:hover{ transform: translateY(-1px); background: rgba(255,255,255,.045); }
-.cityCard--disabled{ opacity:.75; }
 .cityCard--pending{
   justify-content:center;
   min-height: 120px;
+  opacity:.75;
 }
-.cityCard--fake .qr--disabled{
+.cityCard--fake{
+  border-style: dashed;
+  background: rgba(255,255,255,.02);
+}
+.cityCard--fake .qrBox{
   filter: grayscale(100%);
-  opacity:.7;
 }
 .cityCard__top{ display:flex; gap: 10px; align-items:center; }
 .cityCard__icon{
@@ -797,7 +800,7 @@ html.lang-gate-pending body > *:not(#langGate) {
   image-rendering: pixelated;
 }
 
-.qr--disabled{ filter: grayscale(100%); opacity:.85; }
+.qr--disabled{ filter: grayscale(100%); }
 
 .cityCard--disabled{
   cursor: default;
@@ -805,7 +808,8 @@ html.lang-gate-pending body > *:not(#langGate) {
 }
 
 /* MAIS on laisse le QR scannable (il n'a pas besoin d'être cliquable) */
-.cityCard--disabled .qr{
+.cityCard--disabled .qr,
+.cityCard--disabled .qrBox{
   pointer-events: auto;
 }
 
@@ -858,20 +862,32 @@ html.lang-gate-pending body > *:not(#langGate) {
 }
 
 /* QR codes (images statiques ou générés) */
-.cityCard .qr {
+.cityCard .qr,
+.cityCard .qrBox {
   display: block;
   width: min(220px, 100%);
   margin: 12px auto 8px;
 }
 
-.cityCard img.qr {
-  height: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
+.cityCard .qrBox {
   background: #fff;
   padding: 10px;
   border-radius: 14px;
   box-shadow: 0 6px 16px rgba(0,0,0,.12);
+  line-height: 0;
+}
+
+.cityCard img.qr {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  margin: 0;
+  background: #fff;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .cityCard .qr .qrFrame {
