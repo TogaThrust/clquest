@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CityLoopQuest — ouverture</title>
+  <script>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var app = (params.get("app") || "murcia").toLowerCase();
+      var map = {
+        mons: "https://clq-mons.netlify.app/open-browser.html",
+        bruxelles: "https://clq-bruxelles.netlify.app/open-browser.html",
+        brussels: "https://clq-bruxelles.netlify.app/open-browser.html",
+        murcia: "https://clq-murcia.netlify.app/open-browser.html"
+      };
+      var dest = map[app] || map.murcia;
+      location.replace(dest);
+    })();
+  </script>
+</head>
+<body><p>Redirection…</p></body>
+</html>

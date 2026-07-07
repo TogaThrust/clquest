@@ -1,0 +1,904 @@
+:root{
+  --bg: #0b1020;
+  --bg2:#0d1428;
+  --card:#111a33;
+  --muted: rgba(255,255,255,.72);
+  --muted2: rgba(255,255,255,.58);
+  --text: rgba(255,255,255,.92);
+  --line: rgba(255,255,255,.10);
+  --accent:#4dd5ff;
+  --accent2:#9b5cff;
+  --shadow: 0 20px 60px rgba(0,0,0,.35);
+  --radius: 20px;
+  --radius2: 28px;
+  --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family:var(--font);
+  color:var(--text);
+  background:
+    radial-gradient(1200px 800px at 20% -10%, rgba(77,213,255,.20), transparent 60%),
+    radial-gradient(1000px 700px at 90% 0%, rgba(155,92,255,.18), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+}
+
+a{ color:inherit; text-decoration:none; }
+img{ max-width:100%; display:block; }
+
+.container{
+  width:min(1120px, calc(100% - 48px));
+  margin:0 auto;
+}
+
+.nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter: blur(14px);
+  background: rgba(11,16,32,.60);
+  border-bottom: 1px solid var(--line);
+}
+.nav__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:12px 0;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width: 220px;
+}
+.brand__logo{
+  width: 44px;
+  height: 44px;
+  object-fit: contain;      /* remplit bien le carré */
+  border-radius: 10px;    /* look moderne */
+  background: #fff;       /* si ton logo a du blanc/contour, ça ressort bien */
+  padding: 0;
+  box-shadow: 0 8px 18px rgba(0,0,0,.25);
+}
+.brand__by{
+  height: 60px;  /* 3× la taille d’origine (20px) */
+  width: auto;
+  object-fit: contain;
+  opacity: .95;
+  transform: rotate(-25deg);  /* inclinaison vers la gauche */
+  margin-right: -92px;  /* encore un peu vers la gauche */
+}
+
+.brand__name{ font-weight:800; letter-spacing:.2px; color:#e63946; }
+.brand__tag{ font-size:12px; color:var(--muted2); margin-top:2px; }
+
+.nav__links{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  justify-content:center;
+  flex:1;
+}
+.nav__links a{
+  font-size:14px;
+  color:var(--muted);
+  padding:8px 10px;
+  border-radius: 12px;
+}
+.nav__links a:hover{
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+}
+
+.lang{ position:relative; }
+.lang__btn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+  border-radius: 14px;
+  cursor:pointer;
+}
+.lang__btn:hover{ background: rgba(255,255,255,.06); }
+.lang__label{ font-weight:700; font-size:12px; letter-spacing:.6px; }
+.lang__chev{ opacity:.9; }
+
+.lang__menu{
+  position:absolute;
+  right:0;
+  top: calc(100% + 10px);
+  width: 220px;
+  display:none;
+  background: rgba(13,20,40,.95);
+  border:1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding:8px;
+}
+.lang__menu.open{ display:block; }
+.lang__menu button{
+  width:100%;
+  padding:10px 10px;
+  border-radius: 12px;
+  border:0;
+  background: transparent;
+  color: var(--text);
+  cursor:pointer;
+  text-align:left;
+  font-size:14px;
+}
+.lang__menu button:hover{ background: rgba(255,255,255,.06); }
+
+.hero{ padding: 44px 0 10px; }
+.hero__grid{
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 28px;
+  align-items:center;
+}
+.kicker{
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  font-size:56px;   /* au moins 2× plus grand (28px → 56px) */
+  font-weight:700;
+  color: #2563eb;   /* bleu type fond du logo CityLoopQuest */
+  padding:16px 24px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+}
+/* Row kicker + logo (logo visible seulement sur mobile) */
+.kickerRow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.clqLogoKicker{
+  display:none;           /* desktop: caché */
+  width:34px;
+  height:34px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.25);
+}
+
+/* Portrait mobile : 120x120 et aligné à droite du kicker */
+@media (max-width: 680px) and (orientation: portrait){
+  .kickerRow{
+    width:100%;
+    justify-content: space-between;
+  }
+  .clqLogoKicker{
+    display:block;
+    width:120px;
+    height:120px;
+  }
+  .clqLogoBadge{ display:none; }
+}
+
+/* Paysage mobile : force aussi le logo en haut à droite */
+@media (max-height: 520px) and (orientation: landscape){
+  .clqLogoKicker{
+    display:block;
+    position: fixed;
+    right: 12px;
+    top: calc(env(safe-area-inset-top) + 12px);
+    width:120px;
+    height:120px;
+    z-index: 9999;
+  }
+
+  /* Le badge au-dessus du téléphone, on le masque en mobile */
+  .clqLogoBadge{ display:none; }
+}
+
+
+.h1{
+  font-size: clamp(40px, 4.8vw, 62px);
+  margin:14px 0 10px;
+  line-height:1.0;
+}
+.lead{
+  font-size: 17px;
+  color: var(--muted);
+  line-height:1.6;
+  margin: 0 0 18px;
+}
+
+.pillRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin: 8px 0 18px;
+}
+.pill{
+  font-size:12px;
+  color: var(--muted);
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  border-radius:999px;
+  padding:8px 10px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:12px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+  font-weight:700;
+}
+button.btn{
+  font: inherit;
+  cursor: pointer;
+}
+.btn--primary{
+  background: linear-gradient(135deg, rgba(77,213,255,.95), rgba(155,92,255,.85));
+  border: 0;
+  box-shadow: 0 18px 40px rgba(77,213,255,.14);
+}
+.btn--primary:hover{ filter: brightness(1.03); transform: translateY(-1px); }
+
+.heroCtaRow{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.installVideoModal{
+  position: fixed;
+  inset: 0;
+  z-index: 99990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.installVideoModal[hidden]{
+  display: none !important;
+}
+
+.installVideoModal__backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 8, 18, .82);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+}
+
+.installVideoModal__panel{
+  position: relative;
+  z-index: 1;
+  width: min(920px, 100%);
+  max-height: min(92vh, 900px);
+  border-radius: var(--radius2);
+  border: 1px solid var(--line);
+  background: rgba(17,26,51,.98);
+  box-shadow: var(--shadow);
+  padding: 18px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.installVideoModal__head{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.installVideoModal__title{
+  margin: 0;
+  font-size: clamp(16px, 3.2vw, 20px);
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--text);
+  flex: 1;
+  text-align: start;
+}
+
+.installVideoModal__close{
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+.installVideoModal__video{
+  width: 100%;
+  max-height: min(72vh, 640px);
+  border-radius: 14px;
+  background: #000;
+}
+
+.section{ padding: 54px 0; }
+.section--alt{ background: rgba(255,255,255,.02); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.h2{
+  font-size: 28px;
+  margin: 0 0 14px;
+}
+.muted{ color: var(--muted2); margin: 0 0 18px; line-height:1.7; }
+
+.cards{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 18px;
+}
+.card{
+  background: rgba(255,255,255,.04);
+  border:1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 18px 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.20);
+}
+.card__icon{ font-size: 20px; }
+.card__title{ margin: 10px 0 6px; font-size: 16px; }
+.card__text{ margin: 0; color: var(--muted); line-height:1.6; font-size: 14px; }
+
+.banner{
+  margin-top: 18px;
+  border:1px solid var(--line);
+  background: linear-gradient(135deg, rgba(77,213,255,.12), rgba(155,92,255,.10));
+  border-radius: var(--radius);
+  padding: 16px;
+  display:flex;
+  gap: 12px;
+  align-items:flex-start;
+}
+.banner__badge{
+  font-size: 12px;
+  font-weight:800;
+  letter-spacing:.5px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.12);
+}
+.banner__text{ color: var(--muted); line-height:1.6; }
+
+.langGrid{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+.langFlag{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  border-radius: 14px;
+  padding: 12px 10px;
+  text-align:center;
+  font-weight:700;
+  letter-spacing:.3px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  color: var(--text);
+}
+.langFlag:hover{
+  background: rgba(255,255,255,.08);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(77,213,255,.15);
+}
+.langFlag:active{
+  transform: translateY(0);
+}
+.langFlag__img{
+  width: 40px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+  border: 1px solid rgba(255,255,255,.1);
+}
+.langFlag__code{
+  font-size: 11px;
+  opacity: 0.85;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+.langFlag.active{
+  background: rgba(77,213,255,.15);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(77,213,255,.2);
+}
+
+/* Écran de choix de langue (avant le reste de la page) */
+html.lang-gate-pending body {
+  overflow: hidden;
+  height: 100%;
+}
+html.lang-gate-pending body > *:not(#langGate) {
+  visibility: hidden !important;
+}
+
+.langGate {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+  background:
+    radial-gradient(1200px 800px at 20% -10%, rgba(77,213,255,.22), transparent 60%),
+    radial-gradient(1000px 700px at 90% 0%, rgba(155,92,255,.18), transparent 60%),
+    rgba(11,16,32,.94);
+  backdrop-filter: blur(10px);
+}
+
+/* display:flex sur .langGate ne doit pas annuler l’attribut HTML hidden */
+.langGate[hidden] {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+.langGate__panel {
+  width: min(640px, 100%);
+  border-radius: var(--radius2);
+  border: 1px solid var(--line);
+  background: rgba(17,26,51,.96);
+  box-shadow: var(--shadow);
+  padding: 28px 22px 24px;
+  text-align: center;
+}
+
+.langGate__logo {
+  display: block;
+  margin: 0 auto 14px;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.35);
+}
+
+.langGate__title {
+  margin: 0 0 18px;
+  font-size: clamp(18px, 4.2vw, 22px);
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+/* Les 10 formulations « choisissez votre langue » (une par langue supportée) */
+.langGate__title.langGate__title--allLangs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: start;
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.langGate__titleLine {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.langGate__titleLine--guess {
+  color: var(--text);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.langGate__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 520px) {
+  .langGate__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .langGate__title.langGate__title--allLangs {
+    grid-template-columns: 1fr;
+    font-size: 11px;
+  }
+  .langGate__titleLine--guess {
+    font-size: 12px;
+  }
+}
+
+/* PHONE (landscape) */
+.phoneStage{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 6px; /* closer controls to phone */
+}
+.phoneStage--hero{ --phoneW: 520px; }
+.phoneStage--gallery{ --phoneW: 420px; }
+.phone{
+  width: var(--phoneW, 520px);
+  aspect-ratio: 19 / 10;
+  border-radius: 34px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+.phone--small{ --phoneW: 420px; }
+
+.phone__bezel{
+  position:relative;
+  height:100%;
+  padding: 16px;
+}
+.phone__mic{
+  position:absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 58px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.18);
+}
+.phone__screen{
+  height:100%;
+  border-radius: 24px;
+  overflow:hidden;
+  background: rgba(0,0,0,.25);
+  position:relative;
+  margin-left: 14px; /* makes room for mic */
+}
+
+/* Shot wrapper with blurred creux */
+.shot{
+  position:relative;
+  height:100%;
+  width:100%;
+  --shot-bg: none;
+}
+.shot__blur{
+  position:absolute;
+  inset:0;
+  background-image: var(--shot-bg);
+  background-size: cover;
+  background-position: center;
+  filter: blur(22px);
+  transform: scale(1.15);
+  opacity: .92;
+}
+.screenMedia{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit: contain; /* no crop */
+  object-position: center;
+  z-index: 2;
+}
+
+/* App logo overlay (hero only) */
+.phone__appLogo{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  z-index:3;
+  opacity:.0; /* hidden by default, can be adjusted if you want logo always visible */
+}
+.phone__appLogo img{
+  width: 110px;
+  height: 110px;
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+}
+
+/* Controls under hero phone */
+.shotPanel{
+  width: var(--phoneW, 520px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  padding: 0 4px; /* closer to phone edge */
+  margin-top: 0;
+}
+.iconBtn{
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+  cursor:pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+.iconBtn:hover{ background: rgba(255,255,255,.08); }
+.shotPanel__mid{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 6px;
+}
+.shotPanel__caption{
+  font-size: 13px;
+  color: var(--muted);
+  text-align:center;
+  min-height: 18px;
+}
+.shotDots{
+  display:flex;
+  gap: 6px;
+  align-items:center;
+  justify-content:center;
+}
+.dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.18);
+}
+.dot.active{ background: rgba(77,213,255,.95); }
+
+/* Gallery */
+.gallery{
+  margin-top: 18px;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.gCard{
+  margin:0;
+  padding: 14px;
+  border-radius: var(--radius);
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+}
+.gCap{
+  margin-top: 10px;
+  color: var(--muted2);
+  font-size: 13px;
+}
+
+/* Launch */
+.launchWarning{
+  border: 1px solid #ef4444;
+  background: rgba(239, 68, 68, .12);
+  color: rgba(255,255,255,.95);
+  padding: 12px 14px;
+  border-radius: 16px;
+  margin: 0 0 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.cityWorld{
+  display:flex;
+  flex-direction:column;
+  gap: 8px;
+  margin-top: 18px;
+}
+.cityContinent{
+  display:flex;
+  flex-direction:column;
+  gap: 20px;
+}
+.cityContinent__title{
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.cityCountry{
+  display:flex;
+  flex-direction:column;
+  gap: 12px;
+}
+.cityCountry__title{
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--muted2);
+  margin: 0;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.cityGrid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.cityCard{
+  border-radius: var(--radius);
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  padding: 16px;
+  display:flex;
+  flex-direction:column;
+  gap: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.18);
+}
+.cityCard:hover{ transform: translateY(-1px); background: rgba(255,255,255,.045); }
+.cityCard--disabled{ opacity:.75; }
+.cityCard--pending{
+  justify-content:center;
+  min-height: 120px;
+}
+.cityCard--fake .qr--disabled{
+  filter: grayscale(100%);
+  opacity:.7;
+}
+.cityCard__top{ display:flex; gap: 10px; align-items:center; }
+.cityCard__icon{
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 28px;
+}
+
+.cityCard__iconImg{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+}
+.cityCard__title{ font-weight: 800; }
+.cityCard__hint{ color: var(--muted2); font-size: 13px; }
+
+/* QR */
+.qr{
+  display:grid;
+  place-items:center;
+}
+
+/* ✅ cadre blanc arrondi, SANS padding => pas de crop */
+.qrFrame{
+  width: var(--qr-px, 270px);
+  height: var(--qr-px, 270px);
+  background:#fff;
+  border-radius: 18px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+}
+
+/* ✅ le SVG prend exactement la place du cadre */
+.qrFrame svg{
+  width: 100%;
+  height: 100%;
+  display:block;
+  shape-rendering: crispEdges;
+  image-rendering: pixelated;
+}
+
+.qr--disabled{ filter: grayscale(100%); opacity:.85; }
+
+.cityCard--disabled{
+  cursor: default;
+  pointer-events: none; /* la carte n'est pas cliquable */
+}
+
+/* MAIS on laisse le QR scannable (il n'a pas besoin d'être cliquable) */
+.cityCard--disabled .qr{
+  pointer-events: auto;
+}
+
+/* Footer */
+.footer{
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  background: rgba(0,0,0,.10);
+}
+.footer__inner{ display:flex; justify-content:space-between; align-items:flex-start; }
+.footer__brand{ font-weight:900; }
+.footer__text{ color: var(--muted2); font-size: 13px; margin-top: 8px; }
+
+/* Responsive */
+@media (max-width: 980px){
+  .hero__grid{ grid-template-columns: 1fr; }
+  .nav__links{ display:none; }
+  .cards{ grid-template-columns: 1fr; }
+  .langGrid{ grid-template-columns: repeat(3, 1fr); }
+  .gallery{ grid-template-columns: 1fr; }
+  .cityGrid{ grid-template-columns: 1fr; }
+  .phoneStage--hero{ --phoneW: min(520px, 94vw); }
+  .phoneStage--gallery{ --phoneW: min(520px, 94vw); }
+}
+
+/* Empêche le scaling flou */
+.qr {
+  display: grid;
+  place-items: center;
+}
+
+/* Cadre blanc arrondi (OK) */
+.qrFrame {
+  background: #fff;
+  border-radius: 18px;
+  padding: 12px;                 /* garde une marge blanche nette */
+  width: var(--qr-px, 270px);
+  height: var(--qr-px, 270px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;              /* arrondi sur le cadre seulement */
+}
+
+/* Le QR lui-même NE DOIT PAS être arrondi/filtré */
+.qrFrame svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+/* QR codes (images statiques ou générés) */
+.cityCard .qr {
+  display: block;
+  width: min(220px, 100%);
+  margin: 12px auto 8px;
+}
+
+.cityCard .qr .qrFrame {
+  width: min(220px, 100%);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  background: #fff;
+  padding: 10px;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.12);
+}
+
+/* le conteneur du téléphone (mets ici la classe réelle de ton wrapper) */
+.hero__phone{
+  position: relative;
+}
+
+.clqLogoBadge{
+  position: absolute;
+  top: -140px;   /* remonte le logo (ajuste -40 / -60 si besoin) */
+  left: 22px;
+  width: 144px;
+  height: auto;
+  z-index: 20;
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.25);
+  pointer-events: none;
+}
+
+/* responsive (évite un logo trop gros sur mobile) */
+@media (max-width: 680px){
+  .clqLogoBadge{
+  top: -30px;
+  left: 8px;
+  width: 74px;
+}
+}
+
+
+

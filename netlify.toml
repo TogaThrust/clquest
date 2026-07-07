@@ -1,0 +1,10 @@
+# Site statique : pas de build, on publie le dossier courant
+[build]
+  publish = "."
+  command = "echo 'No build step'"
+
+# Redirection propre pour SPA si besoin plus tard (optionnel)
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200

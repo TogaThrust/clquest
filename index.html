@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+
+  <title>TogaThrust — CityLoopQuest</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      var S = ["fr", "en", "nl", "de", "it", "es", "pl", "ar", "yue", "ja"];
+      function ok(l) {
+        return S.indexOf(l) >= 0;
+      }
+      try {
+        var q = (new URLSearchParams(location.search).get("lang") || "").toLowerCase();
+        if (ok(q)) return;
+      } catch (e) {}
+      document.documentElement.classList.add("lang-gate-pending");
+    })();
+  </script>
+  <script defer src="app.js"></script>
+</head>
+
+<body>
+  <div
+    id="langGate"
+    class="langGate"
+    hidden
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="langGateTitle"
+    aria-hidden="true"
+  >
+    <div class="langGate__panel">
+      <img
+        class="langGate__logo"
+        src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png"
+        alt=""
+        width="72"
+        height="72"
+        loading="eager"
+        decoding="async"
+      />
+      <h2 id="langGateTitle" class="langGate__title"></h2>
+      <div class="langGate__grid" role="group" aria-label="Langues">
+        <button type="button" class="langFlag" data-lang-gate="fr" aria-label="Français" title="Français">
+          <img class="langFlag__img" src="https://flagcdn.com/w40/fr.png" alt="" />
+          <span class="langFlag__code">FR</span>
+        </button>
+        <button type="button" class="langFlag" data-lang-gate="en" aria-label="English" title="English">
+          <img class="langFlag__img" src="https://flagcdn.com/w40/gb.png" alt="" />
+          <span class="langFlag__code">EN</span>
+        </button>
+        <button type="button" class="langFlag" data-lang-gate="nl" aria-label="Nederlands" title="Nederlands">
+          <img class="langFlag__img" src="https://flagcdn.com/w40/nl.png" alt="" />
+          <span class="langFlag__code">NL</span>
+        </button>
+        <button type="button" class="langFlag" data-lang-gate="de" aria-label="Deutsch" title="Deutsch">
+          <img class="langFlag__img" src="https://flagcdn.com/w40/de.png" alt="" />
+          <span class="langFlag__code">DE</span>
+        </button>
+        <button type="button" class="langFlag" data-lang-gate="it" aria-label="Italiano" title="Italiano">
+          <img class="langFlag__img" src="https://flagcdn.com/w40/it.png" alt="" />
+          <span class="langFlag__code">IT</span>
+        </button>
+        <button type="button" class="langFlag" data-lang-gate="es" aria-label="Español" title="Español">
+          <img class="langFlag__img" src="https://flagcdn.com/w40/es.png" alt="" />
+          <span class="langFlag__code">ES</span>
+        </button>
+        <button type="button" class="langFlag" data-lang-gate="pl" aria-label="Polski" title="Polski">
+          <img class="langFlag__img" src="https://flagcdn.com/w40/pl.png" alt="" />
+          <span class="langFlag__code">PL</span>
+        </button>
+        <button type="button" class="langFlag" data-lang-gate="ar" aria-label="العربية" title="العربية">
+          <img class="langFlag__img" src="https://flagcdn.com/w40/sa.png" alt="" />
+          <span class="langFlag__code">AR</span>
+        </button>
+        <button type="button" class="langFlag" data-lang-gate="yue" aria-label="粵語" title="粵語">
+          <img class="langFlag__img" src="https://flagcdn.com/w40/hk.png" alt="" />
+          <span class="langFlag__code">粵</span>
+        </button>
+        <button type="button" class="langFlag" data-lang-gate="ja" aria-label="日本語" title="日本語">
+          <img class="langFlag__img" src="https://flagcdn.com/w40/jp.png" alt="" />
+          <span class="langFlag__code">JA</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="TogaThrust">
+        <img class="brand__logo" src="assets/LogoTT.jpg" alt="TogaThrust" />
+        <img class="brand__by" src="assets/by-white.svg" alt="" aria-hidden="true" />
+        <div class="brand__meta">
+          <div class="brand__name">TogaThrust</div>
+          <div class="brand__tag" data-i18n="brandTag">Air and Tourism adventures - Thrill and Culture !</div>
+        </div>
+      </a>
+
+      <nav class="nav__links" aria-label="Navigation">
+        <a href="#features" data-i18n="navFeatures">Fonctionnalités</a>
+        <a href="#languages" data-i18n="navLanguages">Langues</a>
+        <a href="#screens" data-i18n="navScreens">Captures</a>
+        <a href="#launch" data-i18n="navLaunch">Lancer l’app</a>
+      </nav>
+
+      <div class="lang">
+        <button id="langBtn" class="lang__btn" type="button" aria-haspopup="true" aria-expanded="false">
+          <span class="lang__label" id="langLabel">FR</span>
+          <span class="lang__chev" aria-hidden="true">▾</span>
+        </button>
+        <div id="langMenu" class="lang__menu" role="menu" aria-label="Langues">
+          <button role="menuitem" data-lang="fr">Français</button>
+          <button role="menuitem" data-lang="en">English</button>
+          <button role="menuitem" data-lang="nl">Nederlands</button>
+          <button role="menuitem" data-lang="de">Deutsch</button>
+          <button role="menuitem" data-lang="it">Italiano</button>
+          <button role="menuitem" data-lang="es">Español</button>
+          <button role="menuitem" data-lang="pl">Polski</button>
+          <button role="menuitem" data-lang="ar">العربية</button>
+          <button role="menuitem" data-lang="yue">粵語</button>
+          <button role="menuitem" data-lang="ja">日本語</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <div class="kickerRow">
+  <div class="kicker" data-i18n="heroKicker">City Loop Quest !!</div>
+
+  <img
+    class="clqLogoKicker"
+    src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png"
+    alt="CityLoopQuest"
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+          <h1 class="h1" data-i18n="heroTitle">CityLoopQuest</h1>
+          <p class="lead" data-i18n="heroSubtitle">
+            Des parcours touristiques interactifs, riches et payants, déclinables ville par ville.
+          </p>
+
+          <div class="pillRow" aria-label="Pills">
+            <span class="pill" data-i18n="pillCities">Plusieurs villes</span>
+            <span class="pill" data-i18n="pillRoutes">Plusieurs parcours</span>
+            <span class="pill" data-i18n="pillGps">GPS</span>
+            <span class="pill" data-i18n="pillQuiz">Quiz</span>
+            <span class="pill" data-i18n="pillCulture">Culture</span>
+            <span class="pill" data-i18n="pill10">10 langues</span>
+          </div>
+
+          <div class="heroCtaRow">
+            <a class="btn btn--primary" href="#launch" data-i18n="heroCta">Voir les apps</a>
+            <button type="button" class="btn btn--primary" id="installVideoBtn" data-i18n="heroInstallHelp">
+              Comment installer une app sur votre appareil
+            </button>
+          </div>
+        </div>
+
+        <div class="hero__phone">
+          <img
+  class="clqLogoBadge"
+  src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png"
+  alt="CityLoopQuest"
+  loading="lazy"
+  decoding="async"
+/>
+
+          <div class="phoneStage phoneStage--hero">
+            <div class="phone shot" aria-label="Aperçu de l’application (paysage)">
+              <div class="phone__bezel">
+                <div class="phone__mic" aria-hidden="true"></div>
+                <div class="phone__screen">
+                  <div class="shot">
+                    <div class="shot__blur" aria-hidden="true"></div>
+                    <img id="shotImg" class="screenMedia" src="assets/screen-1-fr.png" alt="CityLoopQuest screenshot" />
+                  </div>
+                  <div class="phone__appLogo" aria-hidden="true">
+                    <img src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controls UNDER the phone (not on top of image) -->
+            <div class="shotPanel" aria-label="Navigation des captures">
+              <button id="prevShot" class="iconBtn" type="button" aria-label="Précédent">‹</button>
+
+              <div class="shotPanel__mid">
+                <div id="shotCaption" class="shotPanel__caption"> </div>
+                <div id="shotDots" class="shotDots" aria-label="Positions"></div>
+              </div>
+
+              <button id="nextShot" class="iconBtn" type="button" aria-label="Suivant">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="section">
+      <div class="container">
+        <h2 class="h2" data-i18n="featuresTitle">Ce que fait CityLoopQuest</h2>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card__icon">🧭</div>
+            <h3 class="card__title" data-i18n="f1Title">Parcours & guidage</h3>
+            <p class="card__text" data-i18n="f1Text">Itinéraires, distances réalistes, guidage GPS, liens vers les transports en commun et accès direct à Uber si installée.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">🎭</div>
+            <h3 class="card__title" data-i18n="f2Title">Culture & histoires</h3>
+            <p class="card__text" data-i18n="f2Text">Chansons, musées, pages culturelles, personnages, lieux emblématiques, événements récurrents…</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">🧠</div>
+            <h3 class="card__title" data-i18n="f3Title">Quiz en chemin</h3>
+            <p class="card__text" data-i18n="f3Text">Des questions pendant la balade pour rendre l’expérience ludique (adultes/enfants).</p>
+          </article>
+        </div>
+
+        <div class="banner">
+          <div class="banner__badge" data-i18n="quoteBadge">Le +</div>
+          <div class="banner__text" data-i18n="quoteText">Un produit duplicable : tu crées une ville, tu ajoutes des parcours, et c’est parti.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LANGUAGES -->
+    <section id="languages" class="section section--alt">
+      <div class="container">
+        <h2 class="h2" data-i18n="langTitle">10 langues, accès direct</h2>
+        <p class="muted" data-i18n="langSubtitle">La même expérience, traduite et prête à l’usage.</p>
+
+        <div class="langGrid" aria-label="Langues disponibles">
+          <button class="langFlag" data-lang="fr" type="button" aria-label="Français" title="Français">
+            <img class="langFlag__img" src="https://flagcdn.com/w40/fr.png" alt="Drapeau français" />
+            <span class="langFlag__code">FR</span>
+          </button>
+          <button class="langFlag" data-lang="en" type="button" aria-label="English" title="English">
+            <img class="langFlag__img" src="https://flagcdn.com/w40/gb.png" alt="Drapeau britannique" />
+            <span class="langFlag__code">EN</span>
+          </button>
+          <button class="langFlag" data-lang="nl" type="button" aria-label="Nederlands" title="Nederlands">
+            <img class="langFlag__img" src="https://flagcdn.com/w40/nl.png" alt="Drapeau néerlandais" />
+            <span class="langFlag__code">NL</span>
+          </button>
+          <button class="langFlag" data-lang="de" type="button" aria-label="Deutsch" title="Deutsch">
+            <img class="langFlag__img" src="https://flagcdn.com/w40/de.png" alt="Drapeau allemand" />
+            <span class="langFlag__code">DE</span>
+          </button>
+          <button class="langFlag" data-lang="it" type="button" aria-label="Italiano" title="Italiano">
+            <img class="langFlag__img" src="https://flagcdn.com/w40/it.png" alt="Drapeau italien" />
+            <span class="langFlag__code">IT</span>
+          </button>
+          <button class="langFlag" data-lang="es" type="button" aria-label="Español" title="Español">
+            <img class="langFlag__img" src="https://flagcdn.com/w40/es.png" alt="Drapeau espagnol" />
+            <span class="langFlag__code">ES</span>
+          </button>
+          <button class="langFlag" data-lang="pl" type="button" aria-label="Polski" title="Polski">
+            <img class="langFlag__img" src="https://flagcdn.com/w40/pl.png" alt="Drapeau polonais" />
+            <span class="langFlag__code">PL</span>
+          </button>
+          <button class="langFlag" data-lang="ar" type="button" aria-label="العربية" title="العربية">
+            <img class="langFlag__img" src="https://flagcdn.com/w40/sa.png" alt="Drapeau saoudien" />
+            <span class="langFlag__code">AR</span>
+          </button>
+          <button class="langFlag" data-lang="yue" type="button" aria-label="粵語" title="粵語">
+            <img class="langFlag__img" src="https://flagcdn.com/w40/hk.png" alt="Drapeau de Hong Kong" />
+            <span class="langFlag__code">粵</span>
+          </button>
+          <button class="langFlag" data-lang="ja" type="button" aria-label="日本語" title="日本語">
+            <img class="langFlag__img" src="https://flagcdn.com/w40/jp.png" alt="Drapeau japonais" />
+            <span class="langFlag__code">JA</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREENS -->
+    <section id="screens" class="section">
+      <div class="container">
+        <h2 class="h2" data-i18n="screensTitle">Captures d’écran</h2>
+
+        <div class="gallery" aria-label="Galerie de captures">
+          <!-- 10 captures -->
+          
+          <figure class="gCard">
+            <div class="phoneStage phoneStage--gallery">
+              <div class="phone phone--small shot" aria-label="Capture 1">
+                <div class="phone__bezel">
+                  <div class="phone__mic" aria-hidden="true"></div>
+                  <div class="phone__screen">
+                    <div class="shot">
+                      <div class="shot__blur" aria-hidden="true"></div>
+                      <img class="screenMedia" data-screen="1" src="assets/screen-1-fr.png" alt="Screenshot 1" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <figcaption class="gCap" data-i18n="g1">Capture d’écran 1</figcaption>
+          </figure>
+
+          <figure class="gCard">
+            <div class="phoneStage phoneStage--gallery">
+              <div class="phone phone--small shot" aria-label="Capture 2">
+                <div class="phone__bezel">
+                  <div class="phone__mic" aria-hidden="true"></div>
+                  <div class="phone__screen">
+                    <div class="shot">
+                      <div class="shot__blur" aria-hidden="true"></div>
+                      <img class="screenMedia" data-screen="2" src="assets/screen-2-fr.png" alt="Screenshot 2" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <figcaption class="gCap" data-i18n="g2">Capture d’écran 2</figcaption>
+          </figure>
+
+          <figure class="gCard">
+            <div class="phoneStage phoneStage--gallery">
+              <div class="phone phone--small shot" aria-label="Capture 3">
+                <div class="phone__bezel">
+                  <div class="phone__mic" aria-hidden="true"></div>
+                  <div class="phone__screen">
+                    <div class="shot">
+                      <div class="shot__blur" aria-hidden="true"></div>
+                      <img class="screenMedia" data-screen="3" src="assets/screen-3-fr.png" alt="Screenshot 3" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <figcaption class="gCap" data-i18n="g3">Capture d’écran 3</figcaption>
+          </figure>
+
+          <figure class="gCard">
+            <div class="phoneStage phoneStage--gallery">
+              <div class="phone phone--small shot" aria-label="Capture 4">
+                <div class="phone__bezel">
+                  <div class="phone__mic" aria-hidden="true"></div>
+                  <div class="phone__screen">
+                    <div class="shot">
+                      <div class="shot__blur" aria-hidden="true"></div>
+                      <img class="screenMedia" data-screen="4" src="assets/screen-4-fr.png" alt="Screenshot 4" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <figcaption class="gCap" data-i18n="g4">Capture d’écran 4</figcaption>
+          </figure>
+
+          <figure class="gCard">
+            <div class="phoneStage phoneStage--gallery">
+              <div class="phone phone--small shot" aria-label="Capture 5">
+                <div class="phone__bezel">
+                  <div class="phone__mic" aria-hidden="true"></div>
+                  <div class="phone__screen">
+                    <div class="shot">
+                      <div class="shot__blur" aria-hidden="true"></div>
+                      <img class="screenMedia" data-screen="5" src="assets/screen-5-fr.png" alt="Screenshot 5" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <figcaption class="gCap" data-i18n="g5">Capture d’écran 5</figcaption>
+          </figure>
+
+          <figure class="gCard">
+            <div class="phoneStage phoneStage--gallery">
+              <div class="phone phone--small shot" aria-label="Capture 6">
+                <div class="phone__bezel">
+                  <div class="phone__mic" aria-hidden="true"></div>
+                  <div class="phone__screen">
+                    <div class="shot">
+                      <div class="shot__blur" aria-hidden="true"></div>
+                      <img class="screenMedia" data-screen="6" src="assets/screen-6-fr.png" alt="Screenshot 6" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <figcaption class="gCap" data-i18n="g6">Capture d’écran 6</figcaption>
+          </figure>
+
+          <figure class="gCard">
+            <div class="phoneStage phoneStage--gallery">
+              <div class="phone phone--small shot" aria-label="Capture 7">
+                <div class="phone__bezel">
+                  <div class="phone__mic" aria-hidden="true"></div>
+                  <div class="phone__screen">
+                    <div class="shot">
+                      <div class="shot__blur" aria-hidden="true"></div>
+                      <img class="screenMedia" data-screen="7" src="assets/screen-7-fr.png" alt="Screenshot 7" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <figcaption class="gCap" data-i18n="g7">Capture d’écran 7</figcaption>
+          </figure>
+
+          <figure class="gCard">
+            <div class="phoneStage phoneStage--gallery">
+              <div class="phone phone--small shot" aria-label="Capture 8">
+                <div class="phone__bezel">
+                  <div class="phone__mic" aria-hidden="true"></div>
+                  <div class="phone__screen">
+                    <div class="shot">
+                      <div class="shot__blur" aria-hidden="true"></div>
+                      <img class="screenMedia" data-screen="8" src="assets/screen-8-fr.png" alt="Screenshot 8" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <figcaption class="gCap" data-i18n="g8">Capture d’écran 8</figcaption>
+          </figure>
+
+          <figure class="gCard">
+            <div class="phoneStage phoneStage--gallery">
+              <div class="phone phone--small shot" aria-label="Capture 9">
+                <div class="phone__bezel">
+                  <div class="phone__mic" aria-hidden="true"></div>
+                  <div class="phone__screen">
+                    <div class="shot">
+                      <div class="shot__blur" aria-hidden="true"></div>
+                      <img class="screenMedia" data-screen="9" src="assets/screen-9-fr.png" alt="Screenshot 9" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <figcaption class="gCap" data-i18n="g9">Capture d’écran 9</figcaption>
+          </figure>
+
+          <figure class="gCard">
+            <div class="phoneStage phoneStage--gallery">
+              <div class="phone phone--small shot" aria-label="Capture 10">
+                <div class="phone__bezel">
+                  <div class="phone__mic" aria-hidden="true"></div>
+                  <div class="phone__screen">
+                    <div class="shot">
+                      <div class="shot__blur" aria-hidden="true"></div>
+                      <img class="screenMedia" data-screen="10" src="assets/screen-10-fr.png" alt="Screenshot 10" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <figcaption class="gCap" data-i18n="g10">Capture d’écran 10</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAUNCH -->
+    <section id="launch" class="section section--alt">
+      <div class="container">
+        <h2 class="h2" data-i18n="launchTitle">Commencez l’aventure et choisissez votre ville</h2>
+        <div class="launchWarning" data-i18n="launchGpsWarning">
+          ATTENTION : LE GUIDAGE GPS EST TRES GOURMAND EN ENERGIE. PENSEZ A AVOIR UN PORTABLE A PLEINE CHARGE OU, MIEUX, UNE BATTERIE PORTABLE...
+        </div>
+        <p class="muted" data-i18n="launchSubtitle">Scannez le QR ou cliquez sur la tuile.</p>
+
+        <div class="cityWorld">
+          <div class="cityContinent">
+            <h3 class="cityContinent__title" data-i18n="continentEurope">Europe</h3>
+
+            <div class="cityCountry">
+              <h4 class="cityCountry__title" data-i18n="countryBelgium">Belgique</h4>
+              <div class="cityGrid">
+                <a class="cityCard" href="https://clq-mons.netlify.app/language-selection.html?from=clquest" rel="noreferrer">
+                  <div class="cityCard__top">
+                    <div class="cityCard__icon">
+                      <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="cityCard__title" data-i18n="cityMons">Mons</div>
+                  </div>
+                  <div class="qr" data-qr-url="https://clq-mons.netlify.app/language-selection.html?from=clquest" role="img" aria-label="QR code – CityLoopQuest Mons"></div>
+                  <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
+                </a>
+
+                <a class="cityCard" href="https://clq-bruxelles.netlify.app/language-selection.html?from=clquest" rel="noreferrer">
+                  <div class="cityCard__top">
+                    <div class="cityCard__icon">
+                      <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="cityCard__title" data-i18n="cityBrussels">Bruxelles</div>
+                  </div>
+                  <div class="qr" data-qr-url="https://clq-bruxelles.netlify.app/language-selection.html?from=clquest" role="img" aria-label="QR code – CityLoopQuest Bruxelles"></div>
+                  <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
+                </a>
+
+                <div class="cityCard cityCard--disabled cityCard--pending" aria-disabled="true">
+                  <div class="cityCard__top">
+                    <div class="cityCard__icon">🚧</div>
+                    <div class="cityCard__title" data-i18n="cityLiege">Liège</div>
+                  </div>
+                  <div class="cityCard__hint" data-i18n="cityPendingHint">En cours de développement</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cityCountry">
+              <h4 class="cityCountry__title" data-i18n="countryFrance">France</h4>
+              <div class="cityGrid">
+                <div class="cityCard cityCard--disabled cityCard--pending" aria-disabled="true">
+                  <div class="cityCard__top">
+                    <div class="cityCard__icon">🚧</div>
+                    <div class="cityCard__title" data-i18n="cityLille">Lille</div>
+                  </div>
+                  <div class="cityCard__hint" data-i18n="cityPendingHint">En cours de développement</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cityCountry">
+              <h4 class="cityCountry__title" data-i18n="countrySpain">Espagne</h4>
+              <div class="cityGrid">
+                <div class="cityCard cityCard--disabled cityCard--fake" aria-disabled="true">
+                  <div class="cityCard__top">
+                    <div class="cityCard__icon">
+                      <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="cityCard__title" data-i18n="cityAlicante">Alicante</div>
+                  </div>
+                  <div class="qr qr--disabled" data-qr-url="https://clq-alicante.netlify.app/language-selection.html?from=clquest" role="img" aria-label="QR code – CityLoopQuest Alicante (à venir)"></div>
+                  <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
+                </div>
+
+                <div class="cityCard cityCard--disabled cityCard--fake" aria-disabled="true">
+                  <div class="cityCard__top">
+                    <div class="cityCard__icon">
+                      <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="cityCard__title" data-i18n="cityCaravaca">Caravaca de la Cruz</div>
+                  </div>
+                  <div class="qr qr--disabled" data-qr-url="https://clq-caravaca-de-la-cruz.netlify.app/language-selection.html?from=clquest" role="img" aria-label="QR code – CityLoopQuest Caravaca (à venir)"></div>
+                  <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
+                </div>
+
+                <div class="cityCard cityCard--disabled cityCard--fake" aria-disabled="true">
+                  <div class="cityCard__top">
+                    <div class="cityCard__icon">
+                      <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="cityCard__title" data-i18n="cityCarthagene">Carthagène</div>
+                  </div>
+                  <div class="qr qr--disabled" data-qr-url="https://clq-carthagene.netlify.app/language-selection.html?from=clquest" role="img" aria-label="QR code – CityLoopQuest Carthagène (à venir)"></div>
+                  <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
+                </div>
+
+                <div class="cityCard cityCard--disabled cityCard--fake" aria-disabled="true">
+                  <div class="cityCard__top">
+                    <div class="cityCard__icon">
+                      <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="cityCard__title" data-i18n="cityLorca">Lorca</div>
+                  </div>
+                  <div class="qr qr--disabled" data-qr-url="https://clq-lorca.netlify.app/language-selection.html?from=clquest" role="img" aria-label="QR code – CityLoopQuest Lorca (à venir)"></div>
+                  <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
+                </div>
+
+                <a class="cityCard" href="https://clq-murcia.netlify.app/language-selection.html?from=clquest" rel="noreferrer">
+                  <div class="cityCard__top">
+                    <div class="cityCard__icon">
+                      <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="cityCard__title" data-i18n="cityMurcia">Murcia</div>
+                  </div>
+                  <div class="qr" data-qr-url="https://clq-murcia.netlify.app/language-selection.html?from=clquest" role="img" aria-label="QR code – CityLoopQuest Murcia"></div>
+                  <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
+                </a>
+
+                <div class="cityCard cityCard--disabled cityCard--pending" aria-disabled="true">
+                  <div class="cityCard__top">
+                    <div class="cityCard__icon">🚧</div>
+                    <div class="cityCard__title" data-i18n="cityAguilas">Águilas</div>
+                  </div>
+                  <div class="cityCard__hint" data-i18n="cityPendingHint">En cours de développement</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div
+      id="installVideoModal"
+      class="installVideoModal"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="installVideoModalTitle"
+    >
+      <div class="installVideoModal__backdrop" id="installVideoBackdrop" aria-hidden="true"></div>
+      <div class="installVideoModal__panel">
+        <div class="installVideoModal__head">
+          <h2 id="installVideoModalTitle" class="installVideoModal__title" data-i18n="heroInstallHelp">
+            Comment installer une app sur votre appareil
+          </h2>
+          <button type="button" class="btn installVideoModal__close" id="installVideoCloseBtn" data-i18n="installVideoClose">
+            Fermer
+          </button>
+        </div>
+        <video
+          id="installVideoPlayer"
+          class="installVideoModal__video"
+          controls
+          playsinline
+          preload="auto"
+          autoplay
+          muted
+        ></video>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__left">
+          <div class="footer__brand">TogaThrust</div>
+          <div class="footer__text" data-i18n="footerText">CityLoopQuest — tourisme interactif multilingue.</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
