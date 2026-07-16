@@ -720,7 +720,7 @@ html.lang-gate-pending body > *:not(#langGate) {
 .cityCountry{
   display:flex;
   flex-direction:column;
-  gap: 12px;
+  gap: 16px;
 }
 .cityCountry__title{
   font-size: 1.05rem;
@@ -729,6 +729,20 @@ html.lang-gate-pending body > *:not(#langGate) {
   margin: 0;
   letter-spacing: .02em;
   text-transform: uppercase;
+}
+.cityRegion{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 2px solid var(--line);
+}
+.cityRegion__title{
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted2);
+  margin: 0;
+  letter-spacing: .01em;
 }
 .cityGrid{
   display:grid;
