@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=8" />
   <script>
     (function () {
       var S = ["fr", "en", "nl", "de", "it", "es", "pl", "ar", "yue", "ja"];
@@ -25,7 +25,7 @@
       document.documentElement.classList.add("lang-gate-pending");
     })();
   </script>
-  <script defer src="app.js"></script>
+  <script defer src="app.js?v=8"></script>
 </head>
 
 <body>
@@ -491,60 +491,52 @@
             <div class="cityCountry">
               <h4 class="cityCountry__title" data-i18n="countryBelgium">Belgique</h4>
               <div class="cityGrid">
-                <a class="cityCard" href="https://clq-mons.netlify.app/language-selection.html?from=clquest" rel="noreferrer">
+                <a class="cityCard" href="https://clq-mons.netlify.app" rel="noreferrer">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
                     </div>
                     <div class="cityCard__title" data-i18n="cityMons">Mons</div>
                   </div>
-                  <div class="qrBox">
-                    <img class="qr" src="assets/qr_clq-mons_netlify_app.png?v=6" alt="QR code – CityLoopQuest Mons" width="240" height="240" loading="lazy" decoding="async" />
-                  </div>
+                  <div class="qr" data-qr-url="https://clq-mons.netlify.app" role="img" aria-label="QR code – CityLoopQuest Mons"></div>
                   <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
                 </a>
 
-                <a class="cityCard" href="https://clq-bruxelles.netlify.app/language-selection.html?from=clquest" rel="noreferrer">
+                <a class="cityCard" href="https://clq-bruxelles.netlify.app" rel="noreferrer">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
                     </div>
                     <div class="cityCard__title" data-i18n="cityBrussels">Bruxelles</div>
                   </div>
-                  <div class="qrBox">
-                    <img class="qr" src="assets/qr_clq-bruxelles_netlify_app.png?v=6" alt="QR code – CityLoopQuest Bruxelles" width="240" height="240" loading="lazy" decoding="async" />
-                  </div>
+                  <div class="qr" data-qr-url="https://clq-bruxelles.netlify.app" role="img" aria-label="QR code – CityLoopQuest Bruxelles"></div>
                   <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
                 </a>
 
-                <div class="cityCard cityCard--soon" aria-disabled="true">
+                <a class="cityCard" href="https://clq-liege.netlify.app" rel="noreferrer">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
                     </div>
                     <div class="cityCard__title" data-i18n="cityLiege">Liège</div>
                   </div>
-                  <div class="qrBox">
-                    <img class="qr" src="assets/qr_clq-liege_netlify_app.png?v=6" alt="QR code – CityLoopQuest Liège (à venir)" width="240" height="240" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
-                </div>
+                  <div class="qr" data-qr-url="https://clq-liege.netlify.app" role="img" aria-label="QR code – CityLoopQuest Liège"></div>
+                  <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
+                </a>
               </div>
             </div>
 
             <div class="cityCountry">
               <h4 class="cityCountry__title" data-i18n="countryFrance">France</h4>
               <div class="cityGrid">
-                <a class="cityCard" href="https://clq-lille.netlify.app/language-selection.html?from=clquest" rel="noreferrer">
+                <a class="cityCard" href="https://clq-lille.netlify.app" rel="noreferrer">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
                     </div>
                     <div class="cityCard__title" data-i18n="cityLille">Lille</div>
                   </div>
-                  <div class="qrBox">
-                    <img class="qr" src="assets/qr_clq-lille_netlify_app.png?v=7" alt="QR code – CityLoopQuest Lille" width="240" height="240" loading="lazy" decoding="async" />
-                  </div>
+                  <div class="qr" data-qr-url="https://clq-lille.netlify.app" role="img" aria-label="QR code – CityLoopQuest Lille"></div>
                   <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
                 </a>
               </div>
@@ -553,83 +545,104 @@
             <div class="cityCountry">
               <h4 class="cityCountry__title" data-i18n="countrySpain">Espagne</h4>
               <div class="cityGrid">
-                <div class="cityCard cityCard--soon" aria-disabled="true">
+                <a class="cityCard" href="https://clq-alicante.netlify.app" rel="noreferrer">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
                     </div>
                     <div class="cityCard__title" data-i18n="cityAlicante">Alicante</div>
                   </div>
-                  <div class="qrBox">
-                    <img class="qr" src="assets/qr_clq-alicante_netlify_app.png?v=6" alt="QR code – CityLoopQuest Alicante (à venir)" width="240" height="240" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
-                </div>
+                  <div class="qr" data-qr-url="https://clq-alicante.netlify.app" role="img" aria-label="QR code – CityLoopQuest Alicante"></div>
+                  <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
+                </a>
 
-                <div class="cityCard cityCard--soon" aria-disabled="true">
+                <a class="cityCard" href="https://clq-caravaca.netlify.app" rel="noreferrer">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
                     </div>
                     <div class="cityCard__title" data-i18n="cityCaravaca">Caravaca de la Cruz</div>
                   </div>
-                  <div class="qrBox">
-                    <img class="qr" src="assets/qr_clq-caravaca-de-la-cruz_netlify_app.png?v=6" alt="QR code – CityLoopQuest Caravaca (à venir)" width="240" height="240" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
-                </div>
+                  <div class="qr" data-qr-url="https://clq-caravaca.netlify.app" role="img" aria-label="QR code – CityLoopQuest Caravaca de la Cruz"></div>
+                  <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
+                </a>
 
-                <div class="cityCard cityCard--soon" aria-disabled="true">
+                <a class="cityCard" href="https://clq-cathagene.netlify.app" rel="noreferrer">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
                     </div>
-                    <div class="cityCard__title" data-i18n="cityCarthagene">Carthagène</div>
+                    <div class="cityCard__title" data-i18n="cityCarthagena">Carthagena</div>
                   </div>
-                  <div class="qrBox">
-                    <img class="qr" src="assets/qr_clq-carthagene_netlify_app.png?v=6" alt="QR code – CityLoopQuest Carthagène (à venir)" width="240" height="240" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
-                </div>
+                  <div class="qr" data-qr-url="https://clq-cathagene.netlify.app" role="img" aria-label="QR code – CityLoopQuest Carthagena"></div>
+                  <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
+                </a>
 
-                <div class="cityCard cityCard--soon" aria-disabled="true">
+                <a class="cityCard" href="https://clq-lorca.netlify.app" rel="noreferrer">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
                     </div>
                     <div class="cityCard__title" data-i18n="cityLorca">Lorca</div>
                   </div>
-                  <div class="qrBox">
-                    <img class="qr" src="assets/qr_clq-lorca_netlify_app.png?v=6" alt="QR code – CityLoopQuest Lorca (à venir)" width="240" height="240" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
-                </div>
+                  <div class="qr" data-qr-url="https://clq-lorca.netlify.app" role="img" aria-label="QR code – CityLoopQuest Lorca"></div>
+                  <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
+                </a>
 
-                <a class="cityCard" href="https://clq-murcia.netlify.app/language-selection.html?from=clquest" rel="noreferrer">
+                <a class="cityCard" href="https://clq-murcia.netlify.app" rel="noreferrer">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
                     </div>
                     <div class="cityCard__title" data-i18n="cityMurcia">Murcia</div>
                   </div>
-                  <div class="qrBox">
-                    <img class="qr" src="assets/qr_clq-murcia_netlify_app.png?v=6" alt="QR code – CityLoopQuest Murcia" width="240" height="240" loading="lazy" decoding="async" />
-                  </div>
+                  <div class="qr" data-qr-url="https://clq-murcia.netlify.app" role="img" aria-label="QR code – CityLoopQuest Murcia"></div>
                   <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
                 </a>
 
-                <div class="cityCard cityCard--soon" aria-disabled="true">
+                <a class="cityCard" href="https://clq-aguilas.netlify.app" rel="noreferrer">
                   <div class="cityCard__top">
                     <div class="cityCard__icon">
                       <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
                     </div>
                     <div class="cityCard__title" data-i18n="cityAguilas">Águilas</div>
                   </div>
-                  <div class="qrBox">
-                    <img class="qr" src="assets/qr_clq-aguilas_netlify_app.png?v=6" alt="QR code – CityLoopQuest Águilas (à venir)" width="240" height="240" loading="lazy" decoding="async" />
+                  <div class="qr" data-qr-url="https://clq-aguilas.netlify.app" role="img" aria-label="QR code – CityLoopQuest Águilas"></div>
+                  <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
+                </a>
+
+                <a class="cityCard" href="https://clq-cehegin.netlify.app" rel="noreferrer">
+                  <div class="cityCard__top">
+                    <div class="cityCard__icon">
+                      <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="cityCard__title" data-i18n="cityCehegin">Cehegín</div>
                   </div>
-                  <div class="cityCard__hint" data-i18n="fakeQrHint">QR provisoire (bientôt actif)</div>
-                </div>
+                  <div class="qr" data-qr-url="https://clq-cehegin.netlify.app" role="img" aria-label="QR code – CityLoopQuest Cehegín"></div>
+                  <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
+                </a>
+
+                <a class="cityCard" href="https://clq-cieza.netlify.app" rel="noreferrer">
+                  <div class="cityCard__top">
+                    <div class="cityCard__icon">
+                      <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="cityCard__title" data-i18n="cityCieza">Cieza</div>
+                  </div>
+                  <div class="qr" data-qr-url="https://clq-cieza.netlify.app" role="img" aria-label="QR code – CityLoopQuest Cieza"></div>
+                  <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
+                </a>
+
+                <a class="cityCard" href="https://clq-mazarron.netlify.app" rel="noreferrer">
+                  <div class="cityCard__top">
+                    <div class="cityCard__icon">
+                      <img class="cityCard__iconImg" src="assets/Logo%20minimaliste%20sur%20fond%20bleu.png" alt="CityQuest" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="cityCard__title" data-i18n="cityMazarron">Mazarrón</div>
+                  </div>
+                  <div class="qr" data-qr-url="https://clq-mazarron.netlify.app" role="img" aria-label="QR code – CityLoopQuest Mazarrón"></div>
+                  <div class="cityCard__hint" data-i18n="scanHint">Scannez pour ouvrir sur mobile</div>
+                </a>
               </div>
             </div>
           </div>
