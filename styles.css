@@ -878,6 +878,14 @@ html.lang-gate-pending body > *:not(#langGate) {
   image-rendering: pixelated;
 }
 
+.qrImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
 /* QR codes (images statiques ou générés) */
 .cityCard .qr,
 .cityCard .qrBox {

@@ -1786,17 +1786,21 @@ function renderQrSvg(matrix, options = {}) {
   return { svg, px };
 }
 
+function qrAssetForUrl(url) {
+  const m = (url || "").match(/clq-([a-z]+)\.netlify\.app/i);
+  return m ? `assets/qr-${m[1]}.png` : null;
+}
+
 function initQrs() {
   document.querySelectorAll(".qr[data-qr-url]").forEach((el) => {
     const url = normalizeQrData(el.getAttribute("data-qr-url"));
-    if (!url) return;
-    try {
-      const matrix = buildQrMatrix_V3_L(url);
-      const { svg } = renderQrSvg(matrix, { scale: 5 });
-      el.innerHTML = `<div class="qrFrame">${svg}</div>`;
-    } catch (err) {
-      console.warn("QR generation failed:", url, err);
-    }
+    const src = qrAssetForUrl(url);
+    if (!url || !src) return;
+    const label = el.getAttribute("aria-label") || "QR code";
+    el.innerHTML =
+      `<div class="qrFrame">` +
+      `<img class="qrImg" src="${src}" alt="${label}" width="220" height="220" loading="lazy" decoding="async" />` +
+      `</div>`;
   });
 }
 
