@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=10" />
+  <link rel="stylesheet" href="styles.css?v=11" />
   <script>
     (function () {
       var S = ["fr", "en", "nl", "de", "it", "es", "pl", "ar", "yue", "ja"];
@@ -25,7 +25,7 @@
       document.documentElement.classList.add("lang-gate-pending");
     })();
   </script>
-  <script defer src="app.js?v=10"></script>
+  <script defer src="app.js?v=11"></script>
 </head>
 
 <body>
@@ -107,6 +107,7 @@
 
       <nav class="nav__links" aria-label="Navigation">
         <a href="#features" data-i18n="navFeatures">Fonctionnalités</a>
+        <a href="#pricing" data-i18n="navPricing">Tarifs</a>
         <a href="#languages" data-i18n="navLanguages">Langues</a>
         <a href="#screens" data-i18n="navScreens">Captures</a>
         <a href="#launch" data-i18n="navLaunch">Lancer l’app</a>
@@ -154,6 +155,12 @@
           <p class="lead" data-i18n="heroSubtitle">
             Des parcours touristiques interactifs, riches et payants, déclinables ville par ville.
           </p>
+
+          <a class="pricingTeaser" href="#pricing">
+            <span class="pricingTeaser__badge" data-i18n="pricingKicker">Offre visiteur</span>
+            <span class="pricingTeaser__text" data-i18n="pricingTeaser">Licence 7 jours, accès sans restriction</span>
+            <span class="pricingTeaser__price" aria-hidden="true">4,99&nbsp;€</span>
+          </a>
 
           <div class="pillRow" aria-label="Pills">
             <span class="pill" data-i18n="pillCities">Plusieurs villes</span>
@@ -239,6 +246,38 @@
         <div class="banner">
           <div class="banner__badge" data-i18n="quoteBadge">Le +</div>
           <div class="banner__text" data-i18n="quoteText">Un produit duplicable : tu crées une ville, tu ajoutes des parcours, et c’est parti.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="section section--alt pricing" aria-labelledby="pricingTitle">
+      <div class="container">
+        <div class="pricingCard">
+          <div class="pricingCard__main">
+            <p class="pricingCard__kicker" data-i18n="pricingKicker">Offre visiteur</p>
+            <h2 id="pricingTitle" class="h2 pricingCard__title" data-i18n="pricingTitle">Licence 7 jours — accès complet</h2>
+            <p class="muted pricingCard__lead" data-i18n="pricingSubtitle">
+              Profitez de toutes les fonctionnalités de CityLoopQuest pendant 7 jours, sans restriction.
+            </p>
+            <ul class="pricingCard__list">
+              <li data-i18n="pricingFeature1">Tous les parcours de la ville</li>
+              <li data-i18n="pricingFeature2">Guidage GPS, quiz, culture et contenus audio</li>
+              <li data-i18n="pricingFeature3">10 langues incluses</li>
+            </ul>
+            <p class="pricingCard__note" data-i18n="pricingNote">
+              Achat et activation dans l’app de la ville choisie (section « Lancer l’app »).
+            </p>
+          </div>
+          <aside class="pricingCard__offer" aria-label="4,99 euros">
+            <div class="pricingCard__price">
+              <span class="pricingCard__amount">4,99</span>
+              <span class="pricingCard__currency">€</span>
+            </div>
+            <p class="pricingCard__period" data-i18n="pricingPeriod">valable 7 jours</p>
+            <p class="pricingCard__unlimited" data-i18n="pricingUnlimited">Accès sans restriction</p>
+            <a class="btn btn--primary pricingCard__cta" href="#launch" data-i18n="pricingCta">Choisir une ville</a>
+          </aside>
         </div>
       </div>
     </section>
